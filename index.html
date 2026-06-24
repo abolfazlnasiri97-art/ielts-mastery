@@ -1,1 +1,351 @@
-<h1>IELTS Mastery</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IELTS Mastery — Abolfazl Nasiri</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1B2A4A;
+    --navy-light: #243758;
+    --blue: #3D7A8A;
+    --blue-light: #5FA0AF;
+    --amber: #E0762F;
+    --amber-light: #F2924F;
+    --sage: #6B8F71;
+    --bg: #F4F7FB;
+    --card: #FFFFFF;
+    --border: #DDE4F0;
+    --text: #1B2A4A;
+    --text-muted: #6B7A99;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Hero Section ── */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    color: white;
+    padding: 80px 24px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(224,118,47,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(61,122,138,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+  .hero-tag {
+    display: inline-block;
+    background: var(--amber);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 4px 14px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .hero p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.7);
+    max-width: 500px;
+    margin: 0 auto 8px;
+    line-height: 1.6;
+  }
+  .hero-author {
+    font-size: 13px;
+    color: var(--amber-light);
+    margin-top: 16px;
+    letter-spacing: 1px;
+  }
+
+  /* ── Skills Grid ── */
+  .skills-section {
+    max-width: 900px;
+    margin: -40px auto 0;
+    padding: 0 24px;
+    position: relative;
+    z-index: 2;
+  }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 600px) {
+    .skills-grid { grid-template-columns: 1fr; }
+  }
+  .skill-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 24px;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .skill-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(27,42,74,0.12);
+    border-color: var(--blue);
+  }
+  .skill-card.active {
+    border-color: var(--amber);
+    border-width: 2px;
+  }
+  .skill-card.coming-soon {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .skill-card.coming-soon:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .skill-icon {
+    font-size: 36px;
+    margin-bottom: 12px;
+  }
+  .skill-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .skill-card p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .skill-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 12px;
+  }
+  .skill-badge.active { background: var(--amber); color: white; }
+  .skill-badge.soon { background: var(--border); color: var(--text-muted); }
+
+  /* ── Writing Sub-Cards ── */
+  .writing-section {
+    max-width: 900px;
+    margin: 32px auto;
+    padding: 0 24px;
+  }
+  .writing-section h2 {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--amber);
+    margin-bottom: 16px;
+    font-weight: 700;
+  }
+  .writing-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 600px) {
+    .writing-grid { grid-template-columns: 1fr; }
+  }
+  .writing-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 20px;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.3s;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .writing-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(27,42,74,0.1);
+    border-color: var(--blue);
+  }
+  .writing-card-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+  }
+  .writing-card h4 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .writing-card p {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* ── Features Strip ── */
+  .features {
+    max-width: 900px;
+    margin: 0 auto 40px;
+    padding: 0 24px;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .feature {
+    text-align: center;
+    flex: 1;
+    min-width: 120px;
+  }
+  .feature-icon { font-size: 24px; margin-bottom: 6px; }
+  .feature-text { font-size: 12px; color: var(--text-muted); font-weight: 500; }
+
+  /* ── Footer ── */
+  footer {
+    margin-top: auto;
+    background: var(--navy);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 24px;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+  footer strong { color: white; }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .hero { padding: 60px 20px 50px; }
+    .hero h1 { font-size: 32px; }
+    .hero p { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ── Hero ── -->
+  <div class="hero">
+    <div class="hero-content">
+      <span class="hero-tag">IELTS Academic</span>
+      <h1>IELTS Mastery</h1>
+      <p>Your complete guide to mastering the IELTS exam. Start with Writing — more skills coming soon.</p>
+      <div class="hero-author">By Abolfazl Nasiri</div>
+    </div>
+  </div>
+
+  <!-- ── Skills Grid ── -->
+  <div class="skills-section">
+    <div class="skills-grid">
+      <a href="#writing" class="skill-card active">
+        <div class="skill-icon">✍️</div>
+        <h3>Writing</h3>
+        <p>Complete Task 1 & Task 2 guides with vocabulary banks, practice prompts, timed practice, and self-assessment tools.</p>
+        <span class="skill-badge active">Available Now</span>
+      </a>
+
+      <div class="skill-card coming-soon">
+        <div class="skill-icon">👂</div>
+        <h3>Listening</h3>
+        <p>Practice tests, section strategies, and question-type breakdowns for the IELTS Listening test.</p>
+        <span class="skill-badge soon">Coming Soon</span>
+      </div>
+
+      <div class="skill-card coming-soon">
+        <div class="skill-icon">📖</div>
+        <h3>Reading</h3>
+        <p>Passage types, question strategies, and timed practice for the IELTS Academic Reading test.</p>
+        <span class="skill-badge soon">Coming Soon</span>
+      </div>
+
+      <div class="skill-card coming-soon">
+        <div class="skill-icon">🗣️</div>
+        <h3>Speaking</h3>
+        <p>Part 1, 2, and 3 strategies, topic cards, model answers, and pronunciation tips.</p>
+        <span class="skill-badge soon">Coming Soon</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Writing Sub-Cards ── -->
+  <div class="writing-section" id="writing">
+    <h2>Writing Skills</h2>
+    <div class="writing-grid">
+      <a href="writing/task1.html" class="writing-card">
+        <div class="writing-card-icon">📊</div>
+        <div>
+          <h4>Task 1 — Visual Writing</h4>
+          <p>7 visual types, 100+ practice prompts, vocabulary banks, timed practice, and Band 7 model answers.</p>
+        </div>
+      </a>
+      <a href="writing/task2.html" class="writing-card">
+        <div class="writing-card-icon">✒️</div>
+        <div>
+          <h4>Task 2 — Essay Writing</h4>
+          <p>5 essay types, 100 practice prompts, 719 language items, Band 5→8 comparison, and self-assessment.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- ── Features ── -->
+  <div class="features">
+    <div class="feature">
+      <div class="feature-icon">📱</div>
+      <div class="feature-text">Works on Mobile</div>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🔒</div>
+      <div class="feature-text">Works Offline</div>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">📄</div>
+      <div class="feature-text">PDF Export</div>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">✅</div>
+      <div class="feature-text">Progress Tracking</div>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">⏱️</div>
+      <div class="feature-text">Timed Practice</div>
+    </div>
+  </div>
+
+  <!-- ── Footer ── -->
+  <footer>
+    &copy; 2026 <strong>Abolfazl Nasiri</strong>. All rights reserved.
+  </footer>
+
+</body>
+</html>
